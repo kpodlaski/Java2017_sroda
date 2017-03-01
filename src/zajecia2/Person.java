@@ -34,7 +34,7 @@ public class Person {
         persons[4] = new Person("Ewa","Adamska");
         for (int i=0; i</*7*/persons.length; i++){
             System.out.println(persons[i]);
-            persons[i].pesel=rand.nextLong();
+            persons[i].pesel=Math.abs(rand.nextLong());
         }
         int[] numbers = new int[12];
         for (int i=0; i<numbers.length; i++){
@@ -51,5 +51,26 @@ public class Person {
             System.out.println(objects[i] + "\t" + objects[i].getClass() );
         }
 
+        System.out.println("===========================");
+        for (int i=0; i<persons.length; i++){
+            System.out.println(persons[i] + " " + persons[i].pesel);
+        }
+        System.out.println("===========================");
+        System.out.println("======Sortowanie===========");
+        System.out.println("===========================");
+
+        for (int i=0; i<persons.length;i++){
+            for (int j=i; j<persons.length;j++){
+                if (persons[i].pesel<persons[j].pesel){
+                    p = persons[j];
+                    persons[j]=persons[i];
+                    persons[i]=p;
+                }
+            }
+        }
+
+        for (int i=0; i<persons.length; i++){
+            System.out.println(persons[i] + " " + persons[i].pesel);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package zajecia2;
 
+import java.util.Random;
+
 /**
  * Created by Krzysztof Podlaski on 01.03.2017.
  */
@@ -7,6 +9,7 @@ public class Person {
     public String name;
     public String surname;
     public long pesel;
+    static Random rand = new Random();
 
     public Person(String _name, String surname){
         name=_name;
@@ -31,7 +34,22 @@ public class Person {
         persons[4] = new Person("Ewa","Adamska");
         for (int i=0; i</*7*/persons.length; i++){
             System.out.println(persons[i]);
-            persons[i].pesel=i*1000;
+            persons[i].pesel=rand.nextLong();
         }
+        int[] numbers = new int[12];
+        for (int i=0; i<numbers.length; i++){
+            System.out.println(numbers[i]);
+            Integer integer =new Integer(numbers[i]);
+            int x = integer.intValue();
+            x=integer;
+        }
+
+        Object[] objects = new Object[8];
+        for (int i=0; i<objects.length; i++){
+            if (i< persons.length) objects[i]=persons[i];
+            else if (i<numbers.length) objects[i]=numbers[i];
+            System.out.println(objects[i] + "\t" + objects[i].getClass() );
+        }
+
     }
 }

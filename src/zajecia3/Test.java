@@ -4,8 +4,8 @@ package zajecia3;
  * Created by Krzysztof Podlaski on 08.03.2017.
  */
 public class Test {
-    private int number;
-    private int number2 = 7;
+    public int number;
+    public int number2 = 7;
     private String st;
     private String st2 = "John Doe"; //new String("John Doe");
     static boolean stBool =true;
@@ -30,21 +30,23 @@ public class Test {
         StaticTest st;
         System.out.println("========================");
         st=new StaticTest();
-        st=new StaticTest();st=new StaticTest();st=new StaticTest();
-        st=new StaticTest();
+        st.number=13;
+        //st=new StaticTest();st=new StaticTest();st=new StaticTest();
+        //st=new StaticTest();
         st=null;
         //System.gc();
-        Thread.sleep(3000);
-        while (true){
+        Thread.sleep(300);
+        /*while (true){
             st=new StaticTest();
         }
+        */
     }
 }
 
-class StaticTest{
+class StaticTest extends Test{
     private static long maxid;
     public long id;
-    public boolean stBool;
+    public int number;
     static {
         System.out.println("Konstruktor statyczny StaticTest");
     }
@@ -52,6 +54,8 @@ class StaticTest{
     public StaticTest(){
         System.out.println("Start konstruktora StaticTest");
         id= maxid++;
+        number=6;
+        super.number=18;
     }
 
     @Override

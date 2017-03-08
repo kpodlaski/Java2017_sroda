@@ -22,6 +22,17 @@ public class Test {
         System.out.println("Koniec konstruktora");
     }
 
+    public Test(int number){
+        this();
+        this.number=number;
+    }
+    @Override
+    public String toString() {
+        return "Test{" +
+                "number=" + number +
+                '}';
+    }
+
     public static void main(String[] s) throws InterruptedException {
         Test t;
         System.out.println(Test.stBool + ";" + Test.stBool2);
@@ -30,16 +41,20 @@ public class Test {
         StaticTest st;
         System.out.println("========================");
         st=new StaticTest();
-        st.number=13;
         //st=new StaticTest();st=new StaticTest();st=new StaticTest();
         //st=new StaticTest();
-        st=null;
+        //st=null;
         //System.gc();
-        Thread.sleep(300);
-        /*while (true){
+        /*Thread.sleep(300);
+        while (true){
             st=new StaticTest();
         }
         */
+        //StaticTest * st = new StaticTest();
+        System.out.println(st);
+        //Test * t2 = dynamic_cast<Test> st;
+        Test t2= (Test) st;
+        System.out.println(t2);
     }
 }
 
@@ -52,14 +67,22 @@ class StaticTest extends Test{
     }
 
     public StaticTest(){
+        super(33);
         System.out.println("Start konstruktora StaticTest");
         id= maxid++;
         number=6;
-        super.number=18;
+        //super.number=18;
     }
 
     @Override
     public void finalize(){
         System.out.println("Metoda finalize odpalona "+id);
+    }
+
+    @Override
+    public String toString() {
+        return  super.toString()+"\nStaticTest{" +
+                "number=" + number +
+                '}';
     }
 }

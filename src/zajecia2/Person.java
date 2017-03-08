@@ -72,5 +72,10 @@ public class Person {
         for (int i=0; i<persons.length; i++){
             System.out.println(persons[i] + " " + persons[i].pesel);
         }
+
+        //Pętla for each.
+        for (Person person : persons){
+            System.out.println(person.pesel);
+        }
     }
 }

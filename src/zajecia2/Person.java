@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Created by Krzysztof Podlaski on 01.03.2017.
  */
-public class Person {
+public class Person implements Comparable<Person>{
     public String name;
     public String surname;
     public long pesel;
@@ -14,6 +14,7 @@ public class Person {
     public Person(String _name, String surname){
         name=_name;
         this.surname=surname;
+        pesel=Math.abs(rand.nextLong());
     }
 
     @Override
@@ -77,5 +78,10 @@ public class Person {
         for (Person person : persons){
             System.out.println(person.pesel);
         }
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        return Long.signum(this.pesel - o.pesel) ;
     }
 }

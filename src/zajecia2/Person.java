@@ -41,7 +41,7 @@ public class Person implements Comparable<Person>{
 
     @Override
     public String toString() {
-        return  name + ' ' + surname ;
+        return  name + ' ' + surname  + " "+pesel;
     }
 
     public static void main(String[] a){

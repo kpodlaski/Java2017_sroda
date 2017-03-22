@@ -55,5 +55,18 @@ public class Main {
         System.out.println("======SET========");
         Set<Person> set = new HashSet<>();
         set.addAll(lista);
+        set.add(lista.get(0));
+        System.out.println(set);
+        System.out.println("======MAPS========");
+        Map<Person,Double> salary = new HashMap<>();
+        salary.put(lista.get(0),4235.12);
+        salary.put(lista.get(1),3320.0);
+        System.out.println(salary);
+        System.out.println(salary.get(lista.get(0)));
+        for(Person p : salary.keySet()){
+            System.out.print(p);
+            System.out.print(" => ");
+            System.out.println(salary.get(p));
+        }
     }
 }

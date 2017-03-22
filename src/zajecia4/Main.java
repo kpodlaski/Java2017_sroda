@@ -2,7 +2,7 @@ package zajecia4;
 
 import zajecia2.Person;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * Created by Krzysztof Podlaski on 15.03.2017.
@@ -30,5 +30,30 @@ public class Main {
         for(Person p : persons){
             System.out.println(p.pesel + " " +p);
         }
+
+        List<Person> lista = new ArrayList<>();
+        lista.add(new Person("Ąnna","Annowska"));
+        lista.add(new Person("Tomasz","Tomaszewski"));
+        lista.add(new Person("Monika","Monikowska"));
+        lista.add(new Person("Adam","Adamski"));
+        lista.add(new Person("Ewa","Adamska"));
+        lista.addAll(Arrays.asList(persons));
+        System.out.println("=================");
+        for(int i=0; i<lista.size(); i++){
+            System.out.println(lista.get(i));
+        }
+        Collections.sort(lista);
+        System.out.println("=================");
+        Iterator<Person> it = lista.iterator();
+        while(it.hasNext()){
+            Person p = it.next();
+            if (p.name.charAt(0)=='A') {
+                System.out.println(p);
+            }
+            else it.remove();
+        }
+        System.out.println("======SET========");
+        Set<Person> set = new HashSet<>();
+        set.addAll(lista);
     }
 }

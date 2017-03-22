@@ -9,6 +9,28 @@ public class Person implements Comparable<Person>{
     public String name;
     public String surname;
     public long pesel;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Person person = (Person) o;
+
+        if (pesel != person.pesel) return false;
+        if (!name.equalsIgnoreCase(person.name)) return false;
+        return surname.equalsIgnoreCase(person.surname);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17*name.hashCode();
+        result = 31 * result + surname.hashCode();
+        result = 31 * result + (int) (pesel ^ (pesel >>> 32));
+        return result;
+    }
+
     static Random rand = new Random();
 
     public Person(String _name, String surname){

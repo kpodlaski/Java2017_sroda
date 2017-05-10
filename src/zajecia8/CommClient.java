@@ -29,7 +29,9 @@ public class CommClient {
 
     public void listenOnSocket() throws IOException {
         SocketListener l = new SocketListener();
-        new Thread(l).start();
+        Thread t = new Thread(l);
+        t.setDaemon(true);
+        t.start();
     }
 
     class SocketListener implements  Runnable{

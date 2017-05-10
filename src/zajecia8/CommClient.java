@@ -20,19 +20,35 @@ public class CommClient {
         socket = new Socket(addres,port);
     }
 
-    public void listenOnSocket() throws IOException {
-        InputStream is = socket.getInputStream();
-        while (true){
-            int c = is.read();
-            System.out.print((char) c);
-            if (c == ';') break;
-        }
-    }
-
     public void sendMessage(String message) throws IOException {
         OutputStream os = socket.getOutputStream();
         os.write(message.getBytes());
         os.write(';');
+    }
+
+
+    public void listenOnSocket() throws IOException {
+        SocketListener l = new SocketListener();
+        new Thread(l).start();
+    }
+
+    class SocketListener implements  Runnable{
+
+        @Override
+        public void run() {
+            try{
+                InputStream is = socket.getInputStream();
+                while (true){
+                    int c = is.read();
+                    System.out.print((char) c);
+                    //if (c == ';') break;
+                }
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+
+        }
     }
 
     public static void main(String[] args) throws IOException {
@@ -40,10 +56,10 @@ public class CommClient {
         cc.connectToServer();
         BufferedReader in = new BufferedReader(
                                 new InputStreamReader(System.in));
+        cc.listenOnSocket();
         for (int i=0; i<3; i++){
             String msg = in.readLine();
             cc.sendMessage(msg);
-            cc.listenOnSocket();
         }
     }
 }

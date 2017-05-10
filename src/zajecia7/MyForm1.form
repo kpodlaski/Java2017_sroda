@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="zajecia7.MyForm1">
+  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="28c50" class="javax.swing.JTextField" binding="imieTextField">
+        <constraints border-constraint="North"/>
+        <properties/>
+      </component>
+      <component id="1bcb6" class="javax.swing.JLabel" binding="stopkaLabel">
+        <constraints border-constraint="South"/>
+        <properties>
+          <text value="Copyrights"/>
+        </properties>
+      </component>
+      <component id="103e6" class="javax.swing.JRadioButton" binding="czyDoniczkaRButton">
+        <constraints border-constraint="East"/>
+        <properties>
+          <text value="Czy jesteś doniczką"/>
+        </properties>
+      </component>
+      <component id="54d20" class="javax.swing.JButton" binding="kliknijMnieButton" default-binding="true">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <text value="Kliknij mnie"/>
+          <toolTipText value="No szybciej"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
